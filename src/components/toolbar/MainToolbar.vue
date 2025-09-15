@@ -15,10 +15,17 @@ import { useDiagramStore } from '@/stores/diagram'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
 const store = useDiagramStore()
 const showImport = ref(false)
-function onImport(data) { store.importFromJson(data) }
+function onImport(data) {
+  store.importFromJson(data)
+}
 function exportJson() {
-  const blob = new Blob([JSON.stringify(store.exportToJson(), null, 2)], { type: 'application/json' })
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'diagram.json'; a.click()
+  const blob = new Blob([JSON.stringify(store.exportToJson(), null, 2)], {
+    type: 'application/json',
+  })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = 'diagram.json'
+  a.click()
   URL.revokeObjectURL(a.href)
 }
 </script>

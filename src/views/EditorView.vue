@@ -18,6 +18,13 @@ import EditorSidebar from '@/components/sidebar/EditorSidebar.vue'
 import DiagramCanvas from '@/components/canvas/DiagramCanvas.vue'
 import { useDiagramStore } from '@/stores/diagram'
 const store = useDiagramStore()
-function addTable() { store.addTable({ name: `table_${store.nodes.length + 1}`, columns: [{ name: 'id', type: 'INTEGER', primaryKey: true, nullable: false }] }) }
-function onSelect(id) { store.setSelection([id]) }
+function addTable() {
+  store.addTable({
+    name: `table_${store.nodes.length + 1}`,
+    columns: [{ name: 'id', type: 'INTEGER', primaryKey: true, nullable: false }],
+  })
+}
+function onSelect(id) {
+  store.setSelection([id])
+}
 </script>

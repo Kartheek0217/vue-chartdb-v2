@@ -1,5 +1,9 @@
 <template>
-  <v-dialog :model-value="modelValue" @update:model-value="$emit('update:modelValue', $event)" max-width="800">
+  <v-dialog
+    :model-value="modelValue"
+    @update:model-value="$emit('update:modelValue', $event)"
+    max-width="800"
+  >
     <v-card>
       <v-card-title>Import JSON</v-card-title>
       <v-card-text>
@@ -20,7 +24,11 @@ defineProps({ modelValue: Boolean })
 const emit = defineEmits(['update:modelValue', 'import'])
 const text = ref('')
 function submit() {
-  try { emit('import', JSON.parse(text.value)); emit('update:modelValue', false) }
-  catch { /* show error */ }
+  try {
+    emit('import', JSON.parse(text.value))
+    emit('update:modelValue', false)
+  } catch {
+    /* show error */
+  }
 }
 </script>
