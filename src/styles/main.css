@@ -1,0 +1,13 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+.vue-flow {
+  background: var(--v-theme-surface);
+}
+.vue-flow__node-table {
+  border: 2px solid var(--v-theme-primary);
+  border-radius: 8px;
+}
