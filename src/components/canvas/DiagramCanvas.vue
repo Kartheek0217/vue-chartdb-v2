@@ -1,18 +1,8 @@
 <template>
   <div class="diagram-canvas">
-    <VueFlow
-      v-model:nodes="nodes"
-      v-model:edges="edges"
-      :default-viewport="viewport"
-      :min-zoom="0.1"
-      :max-zoom="3"
-      fit-view-on-init
-      @viewport-change="onViewportChange"
-      @pane-click="onPaneClick"
-      @connect="onConnect"
-      @node-click="onNodeClick"
-      @edge-click="onEdgeClick"
-    >
+    <VueFlow v-model:nodes="nodes" v-model:edges="edges" :default-viewport="viewport" :min-zoom="0.1" :max-zoom="3"
+      fit-view-on-init @viewport-change="onViewportChange" @pane-click="onPaneClick" @connect="onConnect"
+      @node-click="onNodeClick" @edge-click="onEdgeClick">
       <Background variant="dots" :size="1" gap="20" />
       <Controls :show-zoom="true" :show-fit-view="true" :show-interactive="true" />
       <MiniMap :node-stroke-width="2" />

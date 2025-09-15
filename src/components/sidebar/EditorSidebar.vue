@@ -8,9 +8,8 @@
     </v-list>
     <v-list-subheader class="mt-4">Relationships</v-list-subheader>
     <v-list density="compact">
-      <v-list-item v-for="e in edges" :key="e.id" @click="$emit('select', e.id)"
-        >{{ e.source }} -> {{ e.target }}</v-list-item
-      >
+      <v-list-item v-for="e in edges" :key="e.id" @click="$emit('select', e.id)">{{ e.source }} -> {{ e.target
+        }}</v-list-item>
     </v-list>
   </div>
 </template>

@@ -1,11 +1,5 @@
 <template>
-  <BaseEdge
-    :id="id"
-    :style="edgeStyle"
-    :path="path"
-    :marker-end="markerEnd"
-    :marker-start="markerStart"
-  />
+  <BaseEdge :id="id" :style="edgeStyle" :path="path" :marker-end="markerEnd" :marker-start="markerStart" />
 </template>
 
 <script setup>
