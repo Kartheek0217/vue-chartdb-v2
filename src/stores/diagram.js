@@ -6,6 +6,7 @@ export const useDiagramStore = defineStore('diagram', () => {
   const edges = ref([])
   const viewport = ref({ x: 0, y: 0, zoom: 1 })
   const selected = ref([])
+  const editingTable = ref(null)
 
   const selectedNodes = computed(() => nodes.value.filter((n) => selected.value.includes(n.id)))
   const selectedEdges = computed(() => edges.value.filter((e) => selected.value.includes(e.id)))
@@ -65,6 +66,27 @@ export const useDiagramStore = defineStore('diagram', () => {
     })
   }
 
+  function getTable(id) {
+    return nodes.value.find((n) => n.id === id)
+  }
+
+  function updateTable(id, { name, columns, schema } = {}) {
+    const t = nodes.value.find((n) => n.id === id)
+    if (!t) return false
+    if (name !== undefined) t.data.name = name
+    if (columns !== undefined) t.data.columns = columns
+    if (schema !== undefined) t.data.schema = schema
+    return true
+  }
+
+  function setEditingTable(id) {
+    editingTable.value = id
+  }
+
+  function clearEditingTable() {
+    editingTable.value = null
+  }
+
   function exportToJson() {
     return {
       tables: nodes.value.map((n) => ({
@@ -92,6 +114,11 @@ export const useDiagramStore = defineStore('diagram', () => {
     selectedNodes,
     selectedEdges,
     addTable,
+    getTable,
+    updateTable,
+    editingTable,
+    setEditingTable,
+    clearEditingTable,
     addRelationship,
     setViewport,
     setSelection,
